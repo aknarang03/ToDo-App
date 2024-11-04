@@ -12,4 +12,4 @@ import Foundation
 
 let usersListUpdatedKey = "edu.monmouth.csse337.s1328134.usersListUpdated"
 let onlineUsersListUpdatedKey = "edu.monmouth.csse337.s1328134.onlineUsers"
-let messageNotificationKey = "edu.monmouth.csse337.s1328134.messages"
+let todoNotificationKey = "edu.monmouth.csse337.s1328134.messages"
