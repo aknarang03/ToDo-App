@@ -16,13 +16,13 @@ struct User {
     let ref: DatabaseReference?
     let uid: String
     let email: String
-    let profileName: String
+    let username: String
     let phoneNumber: String
     
-    init(uid: String, profileName: String, email: String, phoneNumber: String) {
+    init(uid: String, username: String, email: String, phoneNumber: String) {
         self.ref = nil
         self.uid = uid
-        self.profileName = profileName
+        self.username = username
         self.email = email
         self.phoneNumber = phoneNumber
     }
@@ -33,7 +33,7 @@ struct User {
         
         guard
             let value = snapshot.value as? [String: AnyObject],
-            let profileName = value["profileName"] as? String,
+            let username = value["username"] as? String,
             let email = value["email"] as? String,
             let uid = value["uid"] as? String,
             let phoneNumber = value["phoneNumber"] as? String
@@ -43,7 +43,7 @@ struct User {
         
         self.ref = snapshot.ref
         self.uid = uid
-        self.profileName = profileName
+        self.username = username
         self.email = email
         self.phoneNumber = phoneNumber
         
@@ -52,7 +52,7 @@ struct User {
     func toAnyObject() -> Dictionary<String, String> {
         
         return [
-            "profileName": profileName,
+            "username": username,
             "email": email,
             "uid": uid,
             "phoneNumber": phoneNumber

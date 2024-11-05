@@ -50,11 +50,11 @@ class UserModel {
         }
     }
     
-    func registerAsync (withEmail email: String, password pw: String, andProfileName name: String, andPhoneNumber phone: String) async throws -> (Bool, String) {
+    func registerAsync (withEmail email: String, password pw: String, andUsername name: String, andPhoneNumber phone: String) async throws -> (Bool, String) {
         do {
             let userCreateResponse = try await Auth.auth().createUser(withEmail: email, password: pw)
             authorizedUser = AuthenticatedUser(uid: userCreateResponse.user.uid, email: userCreateResponse.user.email!)
-            newRegisteredUser(withUid: authorizedUser!.uid, profileName: name, andEmail: email, phoneNumber: phone)
+            newRegisteredUser(withUid: authorizedUser!.uid, username: name, andEmail: email, phoneNumber: phone)
             return (true, "User info Registered")
         }
         catch {
@@ -63,16 +63,16 @@ class UserModel {
         }
     }
 
-    func newRegisteredUser(withUid uid: String, profileName name: String, andEmail email: String, phoneNumber phone: String) {
+    func newRegisteredUser(withUid uid: String, username name: String, andEmail email: String, phoneNumber phone: String) {
         
         let userDBref = Database.database().reference(withPath: "Users")
-        let user = User(uid: uid, profileName: name, email: email, phoneNumber: phone)
+        let user = User(uid: uid, username: name, email: email, phoneNumber: phone)
         let userNodeRef = userDBref.child(user.uid)
         
         userNodeRef.setValue(user.toAnyObject())
     }
     
-    func onlineUser (uid: String, profileName name: String) {
+    func onlineUser (uid: String, username name: String) {
         let onlineDBref = Database.database().reference(withPath: "Online")
         let ref = onlineDBref.child(uid)
         ref.setValue(name)
@@ -150,7 +150,7 @@ class UserModel {
                 // print ("we have data snapshot")
                 // print (userData)
                 currentUser = User(snapshot: userData)
-                onlineUser(uid: currentUser!.uid, profileName: currentUser!.profileName)
+                onlineUser(uid: currentUser!.uid, username: currentUser!.username)
                 // print (currentUser)
             }
             
