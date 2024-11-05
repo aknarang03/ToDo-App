@@ -45,10 +45,10 @@ class ToDoTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
-        // Configure the cell...
-//        cell.textLabel?.text = msgModel.postedMessages[msgModel.postedMessages.count - (indexPath.row+1)].postedBy
-//        cell.detailTextLabel?.text = msgModel.postedMessages[msgModel.postedMessages.count - (indexPath.row+1)].postedMessage
+        let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ToDoTableViewCell
+        cell.taskDescriptionText?.text = todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].taskDescription
+        cell.addedText?.text = "added by \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].addedBy) on \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].addedDateTime)"
+        cell.completedText?.text = "completed by \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].completedBy) on \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].completedDateTime)"
         return cell
     }
     
