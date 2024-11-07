@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemDetailsViewController: UIViewController {
+class EditItemViewController: UIViewController {
     
     var showItemId: String?
     var selectedItem: ToDo?

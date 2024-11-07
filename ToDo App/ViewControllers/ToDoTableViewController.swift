@@ -62,7 +62,7 @@ class ToDoTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if (segue.identifier == "detailSegue") {
-            let destinationViewController = segue.destination as! ItemDetailsViewController
+            let destinationViewController = segue.destination as! EditItemViewController
             destinationViewController.showItemId = selectedItemId
         }
         

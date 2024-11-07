@@ -254,10 +254,10 @@
             </objects>
             <point key="canvasLocation" x="666" y="-161"/>
         </scene>
-        <!--ToDo Item Details-->
+        <!--Edit ToDo Item-->
         <scene sceneID="S5c-NR-YnB">
             <objects>
-                <viewController title="ToDo Item Details" id="XiL-bj-dTH" customClass="ItemDetailsViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Edit ToDo Item" id="XiL-bj-dTH" customClass="EditItemViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CPy-N9-H0d">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
