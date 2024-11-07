@@ -45,19 +45,19 @@ class ToDoModel {
         }
     }
     
-    func postNewMessage(item: ToDo) {
+    func postNewItem(item: ToDo) {
         let todoDBRef = Database.database().reference(withPath: "ToDo")
         let newItemRef = todoDBRef.child(item.todoID)
         newItemRef.setValue(item.toAnyObject())
     }
     
-    func updateMessage(item: ToDo) {
+    func updateItem(item: ToDo) {
         let todoDBRef = Database.database().reference(withPath: "ToDo")
         let newItemRef = todoDBRef.child(item.todoID)
         newItemRef.setValue(item.toAnyObject())
     }
     
-    func deleteMessage (item: ToDo) {
+    func deleteItem(item: ToDo) {
         let todoDBRef = Database.database().reference(withPath: "ToDo")
         let newItemRef = todoDBRef.child(item.todoID)
         newItemRef.removeValue()

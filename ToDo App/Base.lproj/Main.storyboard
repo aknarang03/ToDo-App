@@ -233,7 +233,7 @@
         <!--Add ToDo Item-->
         <scene sceneID="4dF-hh-NBZ">
             <objects>
-                <viewController title="Add ToDo Item" id="nKv-Dk-gYf" sceneMemberID="viewController">
+                <viewController title="Add ToDo Item" id="nKv-Dk-gYf" customClass="AddItemViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="39c-uT-CkO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,6 +252,9 @@
                                         <rect key="frame" x="150.33333333333334" y="651" width="92.333333333333343" height="34.333333333333371"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Add Item"/>
+                                        <connections>
+                                            <action selector="addItemPressed:" destination="nKv-Dk-gYf" eventType="touchUpInside" id="Aej-bh-2Qx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -265,6 +268,9 @@
                             <constraint firstItem="Bz7-ZR-DPJ" firstAttribute="leading" secondItem="481-ei-sfW" secondAttribute="leading" id="uRD-dO-yCW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="toDoItemContent" destination="mGe-Gx-EgT" id="STx-pD-Bw0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5Q-vf-jWf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
