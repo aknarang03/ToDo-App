@@ -32,7 +32,7 @@ class RegisterViewController: UIViewController {
                let enteredEmail = email.text,
                let enteredPassword = password.text,
                let enteredPhoneNumber = phone.text {
-            
+                
                 let (result, resultMessage) = try await userModel.registerAsync(
                     withEmail: enteredEmail,
                     password: enteredPassword,
@@ -58,15 +58,15 @@ class RegisterViewController: UIViewController {
             
             }
             
-        else { // CREDENTIALS NOT ENTERED PROPERLY
-            let alert = UIAlertController(title: "Register",
+            else { // CREDENTIALS NOT ENTERED PROPERLY
+                let alert = UIAlertController(title: "Register",
                                           message: "Enter Credentials",
                                           preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true, completion: nil)
-        }
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
         
-    }
+        }
     
     }
     

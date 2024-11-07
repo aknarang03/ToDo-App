@@ -15,10 +15,11 @@ class ToDoModel {
     static let shared  = ToDoModel()
     
     let todoNotification = Notification.Name(rawValue: todoNotificationKey)
-    var postedItems:[ToDo] = []
-    let notificationCenter = NotificationCenter.default
+    
     let todoDBRef = Database.database().reference(withPath: "ToDo")
     var msgObserverHandle: UInt?
+    
+    var postedItems:[ToDo] = []
     
     func observeItems() {
         
