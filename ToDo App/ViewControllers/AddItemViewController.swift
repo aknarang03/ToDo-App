@@ -18,7 +18,6 @@ class AddItemViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //print (userModel.currentUser)
     }
     
     @IBOutlet weak var toDoItemContent: UITextView!
