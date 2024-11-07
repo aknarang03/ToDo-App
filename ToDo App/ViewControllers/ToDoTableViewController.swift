@@ -12,6 +12,8 @@ class ToDoTableViewController: UITableViewController {
     let todoNotification = Notification.Name(rawValue: todoNotificationKey)
     let todoModel = ToDoModel.shared
     
+    var selectedItemId: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -50,6 +52,20 @@ class ToDoTableViewController: UITableViewController {
         cell.addedText?.text = "added by \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].addedBy) on \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].addedDateTime)"
         cell.completedText?.text = "completed by \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].completedBy) on \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].completedDateTime)"
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedItemId = todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].todoID
+        performSegue(withIdentifier: "detailSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "detailSegue") {
+            let destinationViewController = segue.destination as! ItemDetailsViewController
+            destinationViewController.showItemId = selectedItemId
+        }
+        
     }
     
 

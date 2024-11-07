@@ -246,10 +246,51 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="List" image="list.clipboard.fill" catalog="system" id="TED-po-zDc"/>
                     <navigationItem key="navigationItem" id="CkS-eS-TrX"/>
+                    <connections>
+                        <segue destination="XiL-bj-dTH" kind="show" identifier="detailSegue" id="tRw-fU-pNb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dL5-bE-1RZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="666" y="-161"/>
+        </scene>
+        <!--ToDo Item Details-->
+        <scene sceneID="S5c-NR-YnB">
+            <objects>
+                <viewController title="ToDo Item Details" id="XiL-bj-dTH" customClass="ItemDetailsViewController" customModule="ToDo_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CPy-N9-H0d">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTR-nD-3K6" userLabel="ToDo Description">
+                                <rect key="frame" x="63" y="85" width="267" height="330"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOm-EB-fQN" userLabel="Completed Switch">
+                                <rect key="frame" x="42" y="481" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q4f-6H-8ki" userLabel="Save Button">
+                                <rect key="frame" x="262" y="477" width="61" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Save"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eS1-UV-p0l"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ILi-nB-CiP"/>
+                    <connections>
+                        <outlet property="todoDescription" destination="sTR-nD-3K6" id="V8v-GO-hkR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eEi-qi-0PG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1585.4961832061067" y="-161.26760563380282"/>
         </scene>
         <!--Add ToDo Item-->
         <scene sceneID="4dF-hh-NBZ">
