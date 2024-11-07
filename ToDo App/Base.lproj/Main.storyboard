@@ -41,7 +41,6 @@
                                         <buttonConfiguration key="configuration" style="filled" title="Login"/>
                                         <connections>
                                             <action selector="loginButtonPress:" destination="6lo-Su-1ME" eventType="touchUpInside" id="MAn-mT-wFO"/>
-                                            <segue destination="oak-Nb-Y6w" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="V7k-KR-QXd"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need to create an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vv9-jS-CQt">
@@ -74,6 +73,7 @@
                     <connections>
                         <outlet property="email" destination="912-Xa-bIB" id="ErK-ed-eTh"/>
                         <outlet property="password" destination="upj-pn-hFZ" id="Dzp-0y-Ss7"/>
+                        <segue destination="oak-Nb-Y6w" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="HKO-F4-bSd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gva-kU-PSW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

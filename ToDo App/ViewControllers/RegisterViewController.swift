@@ -28,46 +28,46 @@ class RegisterViewController: UIViewController {
         
         Task {
                 
-                if let enteredUsername = username.text,
-                   let enteredEmail = email.text,
-                   let enteredPassword = password.text,
-                   let enteredPhoneNumber = phone.text {
-                
-                    let (result, resultMessage) = try await userModel.registerAsync(
-                        withEmail: enteredEmail,
-                        password: enteredPassword,
-                        andUsername:enteredUsername,
-                        andPhoneNumber: enteredPhoneNumber
-                    )
-                
-                    if result { // REGISTER SUCCEEDED
-                        print (resultMessage)
-                        print (userModel.authorizedUser!.uid)
-                        self.dismiss(animated: true)
-                    }
-                
-                    else { // REGISTER FAILED
-                        print (resultMessage)
-                        let alert = UIAlertController(title: "Register Failed",
-                                                      message: resultMessage,
-                                                      preferredStyle: .alert)
-                        
-                        alert.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                
+            if let enteredUsername = username.text,
+               let enteredEmail = email.text,
+               let enteredPassword = password.text,
+               let enteredPhoneNumber = phone.text {
+            
+                let (result, resultMessage) = try await userModel.registerAsync(
+                    withEmail: enteredEmail,
+                    password: enteredPassword,
+                    andUsername:enteredUsername,
+                    andPhoneNumber: enteredPhoneNumber
+                )
+            
+                if result { // REGISTER SUCCEEDED
+                    print (resultMessage)
+                    print (userModel.authorizedUser!.uid)
+                    self.dismiss(animated: true)
                 }
-                
-            else { // CREDENTIALS NOT ENTERED PROPERLY
-                let alert = UIAlertController(title: "Register",
-                                              message: "Enter Credentials",
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true, completion: nil)
+            
+                else { // REGISTER FAILED
+                    print (resultMessage)
+                    let alert = UIAlertController(title: "Register Failed",
+                                                  message: resultMessage,
+                                                  preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            
             }
             
+        else { // CREDENTIALS NOT ENTERED PROPERLY
+            let alert = UIAlertController(title: "Register",
+                                          message: "Enter Credentials",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(alert, animated: true, completion: nil)
         }
         
+    }
+    
     }
     
 }
