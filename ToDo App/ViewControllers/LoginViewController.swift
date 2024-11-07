@@ -22,12 +22,12 @@ class LoginViewController: UIViewController {
         login()
     }
     @IBAction func registerButtonPress(_ sender: Any) {
-        // NAVIGATE TO REGISTER PAGE
+        performSegue(withIdentifier: "registerSegue", sender: self)
     }
-    
-    // SIGN IN BUTTON FUNCTION
-    
+        
     func login () {
+        
+        print("login button press")
         
         Task {
             
@@ -36,8 +36,7 @@ class LoginViewController: UIViewController {
                 let (result, resultMessage) = try await userModel.signInAsync(withEmail: enteredEmail, andPassword: enteredPassword)
                 
                 if result { // LOGIN SUCCEEDED
-                    //performSegue(withIdentifier: "mainSegue", sender: self)
-                    // NAVIGATE TO MAIN PAGE
+                    performSegue(withIdentifier: "loginSegue", sender: self)
                 }
                 
                 else { // LOGIN FAILED

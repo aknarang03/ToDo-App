@@ -26,6 +26,8 @@ class UserModel {
     
     func signInAsync (withEmail email: String, andPassword pw: String) async throws -> (Bool, String) {
         
+        print("sign in async")
+        
         do {
             let authData = try await Auth.auth().signIn(withEmail: email, password: pw)
             authorizedUser = AuthenticatedUser(uid: authData.user.uid, email: authData.user.email!)

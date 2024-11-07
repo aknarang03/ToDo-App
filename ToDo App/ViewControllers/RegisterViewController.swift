@@ -20,15 +20,13 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var phone: UITextField!
     
-    // ADD A WAY TO GET BACK TO LOGIN PAGE
-    
-    @IBAction func registerButtonPress(_ sender: Any) {
+    @IBAction func registerButtonPressed(_ sender: Any) {
         register()
     }
     
     func register () {
         
-            Task {
+        Task {
                 
                 if let enteredUsername = username.text,
                    let enteredEmail = email.text,
