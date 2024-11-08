@@ -64,6 +64,7 @@ class EditItemViewController: UIViewController {
     @IBAction func saveButtonPress(_ sender: Any) {
         if let item = selectedItem {
             toDoModel.updateItem(item: item)
+            self.dismiss(animated: true)
         } else {
             print("Cannot save")
         }

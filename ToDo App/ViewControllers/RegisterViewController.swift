@@ -11,6 +11,8 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     let userModel = UserModel.shared
@@ -22,6 +24,10 @@ class RegisterViewController: UIViewController {
     
     @IBAction func registerButtonPressed(_ sender: Any) {
         register()
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     func register () {

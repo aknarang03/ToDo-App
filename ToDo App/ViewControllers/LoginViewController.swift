@@ -11,6 +11,8 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     let userModel = UserModel.shared
@@ -23,6 +25,10 @@ class LoginViewController: UIViewController {
     }
     @IBAction func registerButtonPress(_ sender: Any) {
         performSegue(withIdentifier: "registerSegue", sender: self)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
         
     func login () {

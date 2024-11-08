@@ -14,10 +14,16 @@ class AddItemViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     @IBOutlet weak var toDoItemContent: UITextView!
@@ -47,6 +53,8 @@ class AddItemViewController: UIViewController {
         let newItem = ToDo(todoID: id, taskDescription: itemDesc, addedBy: postedBy, addedDateTime: postedTime, completedBy: "N/A", completedDateTime: "N/A")
         
         todoModel.postNewItem(item: newItem)
+        
+        dismissKeyboard()
         
         let alert = UIAlertController(title: "Add Item",
                                       message: "Item added",
