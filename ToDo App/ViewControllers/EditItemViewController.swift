@@ -69,13 +69,6 @@ class EditItemViewController: UIViewController {
         }
     }
     
-    func timeInterval() -> String {
-        let tnow = Date()
-        var ts = String(tnow.timeIntervalSince1970)
-        ts = ts.replacingOccurrences(of: ".", with: "")
-        return ts
-    }
-    
     func getLongDateTime() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
