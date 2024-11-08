@@ -18,6 +18,7 @@ class EditItemViewController: UIViewController {
     }
 
     @IBOutlet weak var todoDescription: UILabel!
+    @IBOutlet weak var completedSwitch: UISwitch!
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -31,10 +32,23 @@ class EditItemViewController: UIViewController {
                 
                 todoDescription.text = selectedItem?.taskDescription
                 
+                if (selectedItem?.completedDateTime == "N/A") {
+                    completedSwitch.isOn = false
+                } else {
+                    completedSwitch.isOn = true
+                }
+                
             }
             
         }
         
     }
-
+    
+    @IBAction func switchValueChanged(_ sender: Any) {
+    }
+    
+    @IBAction func saveButtonPress(_ sender: Any) {
+        
+    }
+    
 }
