@@ -43,12 +43,18 @@ class RegisterViewController: UIViewController {
                 if result { // REGISTER SUCCEEDED
                     print (resultMessage)
                     print (userModel.authorizedUser!.uid)
-                    self.dismiss(animated: true)
+                    let alert = UIAlertController(title: "Register",
+                                              message: "Register successful",
+                                              preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                        self.dismiss(animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
                 }
             
                 else { // REGISTER FAILED
                     print (resultMessage)
-                    let alert = UIAlertController(title: "Register Failed",
+                    let alert = UIAlertController(title: "Register failed",
                                                   message: resultMessage,
                                                   preferredStyle: .alert)
                     
@@ -60,7 +66,7 @@ class RegisterViewController: UIViewController {
             
             else { // CREDENTIALS NOT ENTERED PROPERLY
                 let alert = UIAlertController(title: "Register",
-                                          message: "Enter Credentials",
+                                          message: "Enter credentials",
                                           preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)

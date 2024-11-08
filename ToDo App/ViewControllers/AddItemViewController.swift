@@ -48,6 +48,12 @@ class AddItemViewController: UIViewController {
         
         todoModel.postNewItem(item: newItem)
         
+        let alert = UIAlertController(title: "Add Item",
+                                      message: "Item added",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(alert, animated: true, completion: nil)
+        
     }
 
 }
