@@ -16,6 +16,9 @@ class AddItemViewController: UIViewController {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
+        toDoItemContent.layer.cornerRadius = 10
+        toDoItemContent.clipsToBounds = true
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,6 +64,8 @@ class AddItemViewController: UIViewController {
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
+        
+        toDoItemContent.text = ""
         
     }
 

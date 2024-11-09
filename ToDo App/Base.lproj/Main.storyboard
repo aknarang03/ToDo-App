@@ -279,7 +279,7 @@
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ToDo Item text goes here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Clf-tZ-zCv" userLabel="ToDo Item Text">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="317.66666666666669"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -341,29 +341,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter ToDo item content here.s shdfj shkdjfhksjdhfkjshdjkfh skjdhfkjshdf hjewhrkwjer" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mGe-Gx-EgT" userLabel="ToDo Content">
-                                <rect key="frame" x="34" y="134" width="325" height="167"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mGe-Gx-EgT" userLabel="ToDo Content">
+                                <rect key="frame" x="20" y="64" width="353" height="468"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFX-SZ-vwQ">
-                                <rect key="frame" x="150" y="322" width="92" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Add Item"/>
-                                <connections>
-                                    <action selector="addItemPressed:" destination="nKv-Dk-gYf" eventType="touchUpInside" id="Aej-bh-2Qx"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="481-ei-sfW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mGe-Gx-EgT" firstAttribute="top" secondItem="481-ei-sfW" secondAttribute="top" constant="20" id="7od-06-8F4"/>
+                            <constraint firstItem="481-ei-sfW" firstAttribute="bottom" secondItem="mGe-Gx-EgT" secondAttribute="bottom" constant="320" id="9wq-5J-8HG"/>
+                            <constraint firstItem="mGe-Gx-EgT" firstAttribute="leading" secondItem="481-ei-sfW" secondAttribute="leading" constant="20" id="lCG-YH-pxQ"/>
+                            <constraint firstItem="481-ei-sfW" firstAttribute="trailing" secondItem="mGe-Gx-EgT" secondAttribute="trailing" constant="20" id="mPL-TE-Eem"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="plus.app.fill" catalog="system" id="abu-QD-MII"/>
-                    <navigationItem key="navigationItem" title="Add Item" id="YDe-ZX-Kc0"/>
+                    <navigationItem key="navigationItem" title="Add Item" id="YDe-ZX-Kc0">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="n7f-VF-LDf">
+                            <connections>
+                                <action selector="addItemPressed:" destination="nKv-Dk-gYf" id="waX-ts-rV8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="toDoItemContent" destination="mGe-Gx-EgT" id="hr0-B1-GnK"/>
                     </connections>

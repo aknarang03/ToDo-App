@@ -18,6 +18,8 @@ class EditItemViewController: UIViewController {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
+        todoDescription.layer.cornerRadius = 10
+        todoDescription.clipsToBounds = true
     }
     
     @objc func dismissKeyboard() {
