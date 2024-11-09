@@ -46,11 +46,11 @@ class UserModel {
         }
     }
     
-    func registerAsync (withEmail email: String, password pw: String, andUsername name: String, andPhoneNumber phone: String) async throws -> (Bool, String) {
+    func registerAsync (withEmail email: String, password pw: String, andUsername name: String) async throws -> (Bool, String) {
         do {
             let userCreateResponse = try await Auth.auth().createUser(withEmail: email, password: pw)
             authorizedUser = AuthenticatedUser(uid: userCreateResponse.user.uid, email: userCreateResponse.user.email!)
-            newRegisteredUser(withUid: authorizedUser!.uid, username: name, andEmail: email, phoneNumber: phone)
+            newRegisteredUser(withUid: authorizedUser!.uid, username: name, andEmail: email)
             return (true, "User registered")
         }
         catch {
@@ -59,8 +59,8 @@ class UserModel {
         }
     }
 
-    func newRegisteredUser(withUid uid: String, username name: String, andEmail email: String, phoneNumber phone: String) {
-        let user = User(uid: uid, username: name, email: email, phoneNumber: phone)
+    func newRegisteredUser(withUid uid: String, username name: String, andEmail email: String) {
+        let user = User(uid: uid, username: name, email: email)
         let userNodeRef = userDBref.child(user.uid)
         userNodeRef.setValue(user.toAnyObject())
     }

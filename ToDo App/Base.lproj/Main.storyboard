@@ -98,7 +98,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="agv-pK-Wr2">
-                                <rect key="frame" x="0.0" y="194.99999999999997" width="393" height="331.33333333333326"/>
+                                <rect key="frame" x="0.0" y="189.66666666666666" width="393" height="272.33333333333337"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yg-tD-gUv">
                                         <rect key="frame" x="143.33333333333334" y="0.0" width="106.33333333333334" height="36"/>
@@ -116,7 +116,7 @@
                                         <textInputTraits key="textInputTraits" textContentType="username"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I08-Rz-MIl" userLabel="email">
-                                        <rect key="frame" x="71.666666666666686" y="120" width="250" height="34"/>
+                                        <rect key="frame" x="71.666666666666686" y="120.00000000000003" width="250" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="OnN-XI-Bq2"/>
                                         </constraints>
@@ -124,23 +124,15 @@
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="51p-sN-fVb" userLabel="password">
-                                        <rect key="frame" x="71.666666666666686" y="179" width="250" height="34"/>
+                                        <rect key="frame" x="71.666666666666686" y="179.00000000000003" width="250" height="34"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="ELr-ai-4gW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qnl-BF-xAX" userLabel="phone">
-                                        <rect key="frame" x="71.666666666666686" y="238" width="250" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="rUg-ch-1Ra"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SXI-FG-Fof" userLabel="register button">
-                                        <rect key="frame" x="153" y="297" width="87" height="34.333333333333314"/>
+                                        <rect key="frame" x="153" y="238.00000000000003" width="87" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Register"/>
                                         <connections>
@@ -155,13 +147,12 @@
                         <constraints>
                             <constraint firstItem="agv-pK-Wr2" firstAttribute="leading" secondItem="DgD-O8-aCN" secondAttribute="leading" id="6Jl-6M-LXf"/>
                             <constraint firstItem="DgD-O8-aCN" firstAttribute="trailing" secondItem="agv-pK-Wr2" secondAttribute="trailing" id="6s1-R4-TTC"/>
-                            <constraint firstItem="DgD-O8-aCN" firstAttribute="bottom" secondItem="agv-pK-Wr2" secondAttribute="bottom" constant="315.66666666666674" id="pTz-rM-fIx"/>
+                            <constraint firstItem="DgD-O8-aCN" firstAttribute="bottom" secondItem="agv-pK-Wr2" secondAttribute="bottom" constant="380" id="pTz-rM-fIx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="email" destination="I08-Rz-MIl" id="Da1-ku-fFO"/>
                         <outlet property="password" destination="51p-sN-fVb" id="SA4-PN-Y2v"/>
-                        <outlet property="phone" destination="Qnl-BF-xAX" id="kma-X4-iZK"/>
                         <outlet property="username" destination="nPb-9z-0E8" id="gPl-0g-TFr"/>
                     </connections>
                 </viewController>

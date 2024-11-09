@@ -20,7 +20,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var phone: UITextField!
     
     @IBAction func registerButtonPressed(_ sender: Any) {
         register()
@@ -36,14 +35,12 @@ class RegisterViewController: UIViewController {
                 
             if let enteredUsername = username.text,
                let enteredEmail = email.text,
-               let enteredPassword = password.text,
-               let enteredPhoneNumber = phone.text {
+               let enteredPassword = password.text {
                 
                 let (result, resultMessage) = try await userModel.registerAsync(
                     withEmail: enteredEmail,
                     password: enteredPassword,
-                    andUsername:enteredUsername,
-                    andPhoneNumber: enteredPhoneNumber
+                    andUsername:enteredUsername
                 )
             
                 if result { // REGISTER SUCCEEDED

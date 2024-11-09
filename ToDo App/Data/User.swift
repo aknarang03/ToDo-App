@@ -17,14 +17,12 @@ struct User {
     let uid: String
     let email: String
     let username: String
-    let phoneNumber: String
     
-    init(uid: String, username: String, email: String, phoneNumber: String) {
+    init(uid: String, username: String, email: String) {
         self.ref = nil
         self.uid = uid
         self.username = username
         self.email = email
-        self.phoneNumber = phoneNumber
     }
     
     init?(snapshot: DataSnapshot) {
@@ -35,8 +33,7 @@ struct User {
             let value = snapshot.value as? [String: AnyObject],
             let username = value["username"] as? String,
             let email = value["email"] as? String,
-            let uid = value["uid"] as? String,
-            let phoneNumber = value["phoneNumber"] as? String
+            let uid = value["uid"] as? String
         else {
             return nil
         }
@@ -45,7 +42,6 @@ struct User {
         self.uid = uid
         self.username = username
         self.email = email
-        self.phoneNumber = phoneNumber
         
     }
     
@@ -54,8 +50,7 @@ struct User {
         return [
             "username": username,
             "email": email,
-            "uid": uid,
-            "phoneNumber": phoneNumber
+            "uid": uid
         ]
         
     }
