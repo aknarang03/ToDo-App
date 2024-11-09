@@ -274,27 +274,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="jpC-iz-MZY">
-                                <rect key="frame" x="20" y="64" width="353" height="288"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="300" translatesAutoresizingMaskIntoConstraints="NO" id="jpC-iz-MZY">
+                                <rect key="frame" x="20" y="64" width="353" height="638"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ToDo Item text goes here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Clf-tZ-zCv" userLabel="ToDo Item Text">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="227.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="317.66666666666669"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="231" translatesAutoresizingMaskIntoConstraints="NO" id="7qQ-bf-h2j">
-                                        <rect key="frame" x="0.0" y="267.66666666666669" width="353" height="20.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="617.66666666666663" width="353" height="20.333333333333371"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOm-EB-fQN" userLabel="Completed Switch">
-                                                <rect key="frame" x="0.0" y="0.0" width="51" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="34" height="20.333333333333332"/>
                                                 <connections>
                                                     <action selector="switchValueChanged:" destination="XiL-bj-dTH" eventType="valueChanged" id="6QJ-EU-oGC"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editable?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC7-Jv-sgp">
-                                                <rect key="frame" x="280" y="0.0" width="73" height="20.333333333333332"/>
+                                                <rect key="frame" x="263" y="0.0" width="90" height="20.333333333333332"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="90" id="xpM-sH-Ujw"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -308,7 +311,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eS1-UV-p0l" firstAttribute="trailing" secondItem="jpC-iz-MZY" secondAttribute="trailing" constant="20" id="GZW-p0-8l6"/>
-                            <constraint firstItem="eS1-UV-p0l" firstAttribute="bottom" secondItem="jpC-iz-MZY" secondAttribute="bottom" constant="500" id="IuY-K1-rZl"/>
+                            <constraint firstItem="eS1-UV-p0l" firstAttribute="bottom" secondItem="jpC-iz-MZY" secondAttribute="bottom" constant="150" id="IuY-K1-rZl"/>
                             <constraint firstItem="jpC-iz-MZY" firstAttribute="leading" secondItem="eS1-UV-p0l" secondAttribute="leading" constant="20" id="hTA-sH-RoX"/>
                             <constraint firstItem="jpC-iz-MZY" firstAttribute="top" secondItem="eS1-UV-p0l" secondAttribute="top" constant="20" id="sn8-ee-fAM"/>
                         </constraints>

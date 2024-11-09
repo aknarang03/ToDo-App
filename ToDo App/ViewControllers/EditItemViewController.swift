@@ -79,15 +79,13 @@ class EditItemViewController: UIViewController {
     }
     
     @IBAction func saveButtonPress(_ sender: Any) {
-        
+        selectedItem?.taskDescription = todoDescription.text
         if let item = selectedItem {
-            selectedItem?.taskDescription = todoDescription.text
             toDoModel.updateItem(item: item)
             navigationController?.popViewController(animated: true)
         } else {
             print("Cannot save")
         }
-        
     }
     
     func getLongDateTime() -> String {
