@@ -45,13 +45,24 @@ class ToDoTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoModel.postedItems.count
     }
+    
+    func formatDateString(_ dateString: String) -> String? {
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "MMMM d, yyyy 'at' h:mm:ss a zzz"
+        if let date = inputFormatter.date(from: dateString) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateFormat = "M/d/yyyy h:mm a zzz"
+            return outputFormatter.string(from: date)
+        }
+        return nil
+    }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ToDoTableViewCell
         let currentItem = todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)]
         cell.taskDescriptionText?.text = currentItem.taskDescription
-        cell.addedText?.text = "added: \(currentItem.addedBy) @ \(currentItem.addedDateTime)"
-        cell.completedText?.text = "completed: \(currentItem.completedBy) @ \(currentItem.completedDateTime)"
+        cell.addedText?.text = "added: \(currentItem.addedBy) on \(formatDateString(currentItem.addedDateTime) ?? "")"
+        cell.completedText?.text = "completed: \(currentItem.completedBy) on \(formatDateString(currentItem.completedDateTime) ?? "")"
         if (currentItem.completedBy == "N/A") {cell.checkmark.isHidden = true; cell.completedText.isHidden = true}
         else {cell.checkmark.isHidden = false; cell.completedText.isHidden = false}
         return cell
