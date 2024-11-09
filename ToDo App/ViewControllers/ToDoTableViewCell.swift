@@ -9,9 +9,10 @@ import UIKit
 
 class ToDoTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var checkmark: UIImageView!
     @IBOutlet weak var addedText: UILabel!
+    @IBOutlet weak var taskDescriptionText: UITextView!
     @IBOutlet weak var completedText: UILabel!
-    @IBOutlet weak var taskDescriptionText: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

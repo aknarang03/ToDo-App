@@ -235,7 +235,9 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="addedText" destination="iVn-qT-2su" id="DP0-Ph-942"/>
+                                    <outlet property="checkmark" destination="dN2-3J-gY4" id="m06-VW-bUB"/>
                                     <outlet property="completedText" destination="a1Q-Qf-KZ9" id="6HH-bE-Bxg"/>
+                                    <outlet property="taskDescriptionText" destination="Mgu-TV-zJ5" id="UaT-Ag-jzy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -48,9 +48,12 @@ class ToDoTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ToDoTableViewCell
-        cell.taskDescriptionText?.text = todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].taskDescription
-        cell.addedText?.text = "added by \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].addedBy) on \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].addedDateTime)"
-        cell.completedText?.text = "completed by \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].completedBy) on \(todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].completedDateTime)"
+        let currentItem = todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)]
+        cell.taskDescriptionText?.text = currentItem.taskDescription
+        cell.addedText?.text = "added by \(currentItem.addedBy) on \(currentItem.addedDateTime)"
+        cell.completedText?.text = "completed by \(currentItem.completedBy) on \(currentItem.completedDateTime)"
+        if (currentItem.completedBy == "N/A") {cell.checkmark.isHidden = true; cell.completedText.isHidden = true}
+        else {cell.checkmark.isHidden = false; cell.completedText.isHidden = false}
         return cell
     }
     
