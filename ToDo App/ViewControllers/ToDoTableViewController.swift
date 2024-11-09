@@ -67,6 +67,5 @@ class ToDoTableViewController: UITableViewController {
         }
         
     }
-    
 
 }
