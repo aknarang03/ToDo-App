@@ -57,6 +57,12 @@ class ToDoTableViewController: UITableViewController {
         return nil
     }
 
+    @IBAction func logoutPressed(_ sender: Any) {
+        UserModel.shared.currentUser = nil
+        UserModel.shared.authorizedUser = nil
+        self.dismiss(animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath) as! ToDoTableViewCell
         let currentItem = todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)]

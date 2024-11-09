@@ -247,6 +247,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="ToDo List" id="CkS-eS-TrX">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Lal-pg-po5">
+                            <connections>
+                                <action selector="logoutPressed:" destination="Sa5-me-F4C" id="rg6-te-lMO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="LL5-Wn-Avp" userLabel="Add button">
                             <connections>
                                 <segue destination="nKv-Dk-gYf" kind="show" identifier="addSegue" id="jOG-JG-Wpw"/>
