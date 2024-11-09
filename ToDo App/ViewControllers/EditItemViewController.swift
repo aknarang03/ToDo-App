@@ -16,9 +16,16 @@ class EditItemViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 
-    @IBOutlet weak var todoDescription: UILabel!
+    @IBOutlet weak var editableLabel: UILabel!
+    @IBOutlet weak var todoDescription: UITextView!
     @IBOutlet weak var completedSwitch: UISwitch!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,7 +38,17 @@ class EditItemViewController: UIViewController {
             
             if (selectedItem != nil) {
                 
+                let editable = (selectedItem?.addedBy == userModel.currentUser?.username)
+                
                 todoDescription.text = selectedItem?.taskDescription
+                
+                if (editable) {
+                    todoDescription.isEditable = true
+                    editableLabel.text = "can edit"
+                } else {
+                    todoDescription.isEditable = false
+                    editableLabel.text = "cannot edit"
+                }
                 
                 if (selectedItem?.completedDateTime == "N/A") {
                     completedSwitch.isOn = false
@@ -64,6 +81,7 @@ class EditItemViewController: UIViewController {
     @IBAction func saveButtonPress(_ sender: Any) {
         
         if let item = selectedItem {
+            selectedItem?.taskDescription = todoDescription.text
             toDoModel.updateItem(item: item)
             navigationController?.popViewController(animated: true)
         } else {

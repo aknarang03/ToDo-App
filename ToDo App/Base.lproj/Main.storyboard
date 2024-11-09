@@ -274,23 +274,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTR-nD-3K6" userLabel="ToDo Description">
-                                <rect key="frame" x="63" y="85" width="267" height="330"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOm-EB-fQN" userLabel="Completed Switch">
-                                <rect key="frame" x="42" y="481" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="switchValueChanged:" destination="XiL-bj-dTH" eventType="valueChanged" id="6QJ-EU-oGC"/>
-                                </connections>
-                            </switch>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="jpC-iz-MZY">
+                                <rect key="frame" x="20" y="64" width="353" height="288"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ToDo Item text goes here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Clf-tZ-zCv" userLabel="ToDo Item Text">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="227.66666666666666"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="231" translatesAutoresizingMaskIntoConstraints="NO" id="7qQ-bf-h2j">
+                                        <rect key="frame" x="0.0" y="267.66666666666669" width="353" height="20.333333333333314"/>
+                                        <subviews>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOm-EB-fQN" userLabel="Completed Switch">
+                                                <rect key="frame" x="0.0" y="0.0" width="51" height="20.333333333333332"/>
+                                                <connections>
+                                                    <action selector="switchValueChanged:" destination="XiL-bj-dTH" eventType="valueChanged" id="6QJ-EU-oGC"/>
+                                                </connections>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editable?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC7-Jv-sgp">
+                                                <rect key="frame" x="280" y="0.0" width="73" height="20.333333333333332"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eS1-UV-p0l"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eS1-UV-p0l" firstAttribute="trailing" secondItem="jpC-iz-MZY" secondAttribute="trailing" constant="20" id="GZW-p0-8l6"/>
+                            <constraint firstItem="eS1-UV-p0l" firstAttribute="bottom" secondItem="jpC-iz-MZY" secondAttribute="bottom" constant="500" id="IuY-K1-rZl"/>
+                            <constraint firstItem="jpC-iz-MZY" firstAttribute="leading" secondItem="eS1-UV-p0l" secondAttribute="leading" constant="20" id="hTA-sH-RoX"/>
+                            <constraint firstItem="jpC-iz-MZY" firstAttribute="top" secondItem="eS1-UV-p0l" secondAttribute="top" constant="20" id="sn8-ee-fAM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Item" id="ILi-nB-CiP">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="fvh-Hl-huv">
@@ -301,7 +322,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="completedSwitch" destination="dOm-EB-fQN" id="Qcq-9A-cCN"/>
-                        <outlet property="todoDescription" destination="sTR-nD-3K6" id="V8v-GO-hkR"/>
+                        <outlet property="editableLabel" destination="pC7-Jv-sgp" id="Lzc-Ra-Rzl"/>
+                        <outlet property="todoDescription" destination="Clf-tZ-zCv" id="35f-Ga-HWW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eEi-qi-0PG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
