@@ -56,12 +56,12 @@ class ToDoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedItemId = todoModel.postedItems[todoModel.postedItems.count - (indexPath.row+1)].todoID
-        performSegue(withIdentifier: "detailSegue", sender: self)
+        performSegue(withIdentifier: "editSegue", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if (segue.identifier == "detailSegue") {
+        if (segue.identifier == "editSegue") {
             let destinationViewController = segue.destination as! EditItemViewController
             destinationViewController.showItemId = selectedItemId
         }
