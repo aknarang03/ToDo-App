@@ -13,7 +13,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
-        //userModel.observeUsers()
     }
     
     let userModel = UserModel.shared
@@ -43,13 +42,12 @@ class LoginViewController: UIViewController {
                 let (result, resultMessage) = try await userModel.signInAsync(withEmail: enteredEmail, andPassword: enteredPassword)
                 
                 if result { // LOGIN SUCCEEDED
-                    //userModel.observeUsers()
                     performSegue(withIdentifier: "loginSegue", sender: self)
                 }
                 
                 else { // LOGIN FAILED
                     let alert = UIAlertController(title: "Login Failed",
-                                                  message: resultMessage,
+                                                  message: "Error: \(resultMessage)",
                                                   preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default))
                     self.present(alert, animated: true, completion: nil)
@@ -57,7 +55,7 @@ class LoginViewController: UIViewController {
                 
             } else { // CREDENTIALS NOT ENTERED PROPERLY
                 let alert = UIAlertController(title: "Login",
-                                              message: "Enter Credentials",
+                                              message: "Please enter credentials",
                                               preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)

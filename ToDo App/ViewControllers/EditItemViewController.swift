@@ -50,10 +50,10 @@ class EditItemViewController: UIViewController {
                 
                 if (editable) {
                     todoDescription.isEditable = true
-                    editableLabel.text = "can edit"
+                    editableLabel.text = "can edit text"
                 } else {
                     todoDescription.isEditable = false
-                    editableLabel.text = "cannot edit"
+                    editableLabel.text = "cannot edit text"
                 }
                 
                 if (selectedItem?.completedDateTime == "N/A") {
