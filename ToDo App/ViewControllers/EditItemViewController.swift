@@ -29,6 +29,7 @@ class EditItemViewController: UIViewController {
     @IBOutlet weak var editableLabel: UILabel! // tells user if they can edit the text or not
     @IBOutlet weak var todoDescription: UITextView!
     @IBOutlet weak var completedSwitch: UISwitch!
+    @IBOutlet weak var deleteButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -47,9 +48,11 @@ class EditItemViewController: UIViewController {
                 
                 if (editable) {
                     todoDescription.isEditable = true
+                    deleteButton.isHidden = false
                     editableLabel.text = "can edit text"
                 } else {
                     todoDescription.isEditable = false
+                    deleteButton.isHidden = true
                     editableLabel.text = "cannot edit text"
                 }
                 
@@ -79,6 +82,14 @@ class EditItemViewController: UIViewController {
             
         }
     
+    }
+    @IBAction func deleteButtonPress(_ sender: Any) {
+        if let item = selectedItem {
+            toDoModel.deleteItem(item: item)
+            navigationController?.popViewController(animated: true)
+        } else {
+            print("Cannot delete")
+        }
     }
     
     @IBAction func saveButtonPress(_ sender: Any) {
