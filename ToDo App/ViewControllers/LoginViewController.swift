@@ -32,9 +32,7 @@ class LoginViewController: UIViewController {
     }
         
     func login () {
-        
-        print("login button press")
-        
+                
         Task {
             
             if let enteredEmail = email.text, let enteredPassword = password.text {
@@ -42,7 +40,7 @@ class LoginViewController: UIViewController {
                 let (result, resultMessage) = try await userModel.signInAsync(withEmail: enteredEmail, andPassword: enteredPassword)
                 
                 if result { // LOGIN SUCCEEDED
-                    performSegue(withIdentifier: "loginSegue", sender: self)
+                    performSegue(withIdentifier: "loginSegue", sender: self) // segue to main nav controller
                 }
                 
                 else { // LOGIN FAILED
@@ -55,7 +53,7 @@ class LoginViewController: UIViewController {
                 
             } else { // CREDENTIALS NOT ENTERED PROPERLY
                 let alert = UIAlertController(title: "Login",
-                                              message: "Please enter credentials",
+                                              message: "Please enter valid credentials",
                                               preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)

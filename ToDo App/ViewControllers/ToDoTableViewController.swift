@@ -18,15 +18,18 @@ class ToDoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("current uid: \(userModel.currentUser?.uid ?? "no current uid")")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         createObservers()
         todoModel.observeItems()
-        userModel.observeUsers()
+        userModel.observeUsers() // observe users so that usernames can be displayed
+        
+        /* I made it so that ToDo items have a user ID attached instead of a username, so users should probably
+        be observed in case a new user posts something... */
     }
     
+    // stop observing when you can't see the table
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         todoModel.cancelObserver()
@@ -35,13 +38,14 @@ class ToDoTableViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self, name: userNotification, object: nil)
     }
 
+    // wait for notifications
     func createObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTable(notification:)), name: todoNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTable(notification:)), name: userNotification, object: nil)
     }
     
-    @objc
-    func refreshTable(notification: NSNotification) {
+    // refresh the table when user or todo notification is recieved
+    @objc func refreshTable(notification: NSNotification) {
         self.tableView.reloadData()
     }
 
@@ -53,6 +57,7 @@ class ToDoTableViewController: UITableViewController {
         return todoModel.postedItems.count
     }
     
+    // make the date string smaller for display purposes
     func formatDateString(_ dateString: String) -> String? {
         let inputFormatter = DateFormatter()
         inputFormatter.dateFormat = "MMMM d, yyyy 'at' h:mm:ss a zzz"
@@ -80,6 +85,7 @@ class ToDoTableViewController: UITableViewController {
         
         cell.completedText?.text = "completed by \(userModel.getUsername(for: currentItem.completedBy) ?? "") on \(formatDateString(currentItem.completedDateTime) ?? "")"
         
+        // show as complete or incomplete
         if (currentItem.completedBy == "N/A") {cell.checkmark.isHidden = true; cell.completedText.isHidden = true}
         else {cell.checkmark.isHidden = false; cell.completedText.isHidden = false}
         

@@ -15,10 +15,9 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.view.addGestureRecognizer(tapGesture)
+        self.view.addGestureRecognizer(tapGesture) // dismisses keyboard when you tap off of it
         toDoItemContent.layer.cornerRadius = 10
         toDoItemContent.clipsToBounds = true
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -32,12 +31,13 @@ class AddItemViewController: UIViewController {
     @IBOutlet weak var toDoItemContent: UITextView!
     
     func timeInterval() -> String {
-        let tnow = Date()
-        var ts = String(tnow.timeIntervalSince1970)
-        ts = ts.replacingOccurrences(of: ".", with: "")
-        return ts
+        let timeNow = Date()
+        var timeStr = String(timeNow.timeIntervalSince1970)
+        timeStr = timeStr.replacingOccurrences(of: ".", with: "")
+        return timeStr
     }
     
+    // to be used for ID
     func getLongDateTime() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
@@ -55,17 +55,18 @@ class AddItemViewController: UIViewController {
     
         let newItem = ToDo(todoID: id, taskDescription: itemDesc, addedBy: postedBy, addedDateTime: postedTime, completedBy: "N/A", completedDateTime: "N/A")
         
-        todoModel.postNewItem(item: newItem)
+        todoModel.postNewItem(item: newItem) // add item to database
         
         dismissKeyboard()
         
+        // let user know that item was added
         let alert = UIAlertController(title: "Add Item",
                                       message: "Item added",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         self.present(alert, animated: true, completion: nil)
         
-        toDoItemContent.text = ""
+        toDoItemContent.text = "" // clear the text in case they want to add more
         
     }
 

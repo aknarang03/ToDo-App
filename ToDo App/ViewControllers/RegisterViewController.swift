@@ -39,8 +39,8 @@ class RegisterViewController: UIViewController {
                 
                 let (result, resultMessage) = try await userModel.registerAsync(
                     withEmail: enteredEmail,
-                    password: enteredPassword,
-                    andUsername:enteredUsername
+                    andPassword: enteredPassword,
+                    andUsername: enteredUsername
                 )
             
                 if result { // REGISTER SUCCEEDED
@@ -69,7 +69,7 @@ class RegisterViewController: UIViewController {
             
             else { // CREDENTIALS NOT ENTERED PROPERLY
                 let alert = UIAlertController(title: "Register",
-                                          message: "Enter credentials",
+                                          message: "Please enter valid credentials",
                                           preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)

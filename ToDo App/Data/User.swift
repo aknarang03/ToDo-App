@@ -46,13 +46,11 @@ struct User {
     }
     
     func toAnyObject() -> Dictionary<String, String> {
-        
         return [
             "username": username,
             "email": email,
             "uid": uid
         ]
-        
     }
     
 }

@@ -20,15 +20,13 @@ class EditItemViewController: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
         todoDescription.layer.cornerRadius = 10
         todoDescription.clipsToBounds = true
-        print("current uid: \(userModel.currentUser?.uid ?? "no current uid")")
-        print("show item id: \(showItemId)" ?? "no show item id")
     }
     
     @objc func dismissKeyboard() {
         self.view.endEditing(true)
     }
 
-    @IBOutlet weak var editableLabel: UILabel!
+    @IBOutlet weak var editableLabel: UILabel! // tells user if they can edit the text or not
     @IBOutlet weak var todoDescription: UITextView!
     @IBOutlet weak var completedSwitch: UISwitch!
     
@@ -39,11 +37,10 @@ class EditItemViewController: UIViewController {
         if let itemId = showItemId {
             
             selectedItem = toDoModel.getItem(id: itemId)
-            print("selected item id: \(selectedItem?.todoID)" ?? "no selected item id")
-            print("added by id: \(selectedItem?.addedBy)" ?? "no added by id")
             
             if (selectedItem != nil) {
                                 
+                // indicate text is editable if user ID matches selected item's posted by user ID
                 let editable = (selectedItem?.addedBy == userModel.currentUser?.uid)
                 
                 todoDescription.text = selectedItem?.taskDescription
@@ -94,6 +91,7 @@ class EditItemViewController: UIViewController {
         }
     }
     
+    // to be used for IDs
     func getLongDateTime() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()

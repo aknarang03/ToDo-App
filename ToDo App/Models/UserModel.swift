@@ -14,11 +14,10 @@ class UserModel {
     static let shared = UserModel()
     
     let usersUpdatedNotification = Notification.Name(rawValue: usersNotificationKey)
-    
-    let userDBref = Database.database().reference(withPath: "Users")
-    
     var msgObserverHandle: UInt?
     
+    let userDBref = Database.database().reference(withPath: "Users")
+        
     var authorizedUser: AuthenticatedUser?
     var currentUser: User?
     
@@ -26,12 +25,12 @@ class UserModel {
     
     private init() {}
     
-    func signInAsync (withEmail email: String, andPassword pw: String) async throws -> (Bool, String) {
+    // sign in using Firebase authentication
+    func signInAsync (withEmail email: String, andPassword password: String) async throws -> (Bool, String) {
         do {
-            let authData = try await Auth.auth().signIn(withEmail: email, password: pw)
+            let authData = try await Auth.auth().signIn(withEmail: email, password: password)
             authorizedUser = AuthenticatedUser(uid: authData.user.uid, email: authData.user.email!)
             try await getLoggedInUser()
-            print("sign in async")
             return (true, "Login successful")
         }
         catch {
@@ -40,6 +39,7 @@ class UserModel {
         }
     }
     
+    // sign out using Firebase authentication
     func signOut() {
         do {
             try Auth.auth().signOut()
@@ -51,11 +51,12 @@ class UserModel {
         }
     }
     
-    func registerAsync (withEmail email: String, password pw: String, andUsername name: String) async throws -> (Bool, String) {
+    // register using Firebase authentication
+    func registerAsync (withEmail email: String, andPassword password: String, andUsername username: String) async throws -> (Bool, String) {
         do {
-            let userCreateResponse = try await Auth.auth().createUser(withEmail: email, password: pw)
+            let userCreateResponse = try await Auth.auth().createUser(withEmail: email, password: password)
             authorizedUser = AuthenticatedUser(uid: userCreateResponse.user.uid, email: userCreateResponse.user.email!)
-            newRegisteredUser(withUid: authorizedUser!.uid, username: name, andEmail: email)
+            addNewUser(withUid: authorizedUser!.uid, andUsername: username, andEmail: email)
             return (true, "User registered")
         }
         catch {
@@ -64,17 +65,18 @@ class UserModel {
         }
     }
 
-    func newRegisteredUser(withUid uid: String, username name: String, andEmail email: String) {
+    // add user to realtime database
+    func addNewUser(withUid uid: String, andUsername name: String, andEmail email: String) {
         let user = User(uid: uid, username: name, email: email)
         let userNodeRef = userDBref.child(user.uid)
         userNodeRef.setValue(user.toAnyObject())
     }
 
+    // watch for updates from User realtime database table
     func observeUsers () {
-        
         msgObserverHandle = userDBref.observe(.value, with: {snapshot in
             var tempUsers:[User] = []
-            for child in snapshot.children  {
+            for child in snapshot.children {
                 if let data = child as? DataSnapshot {
                     if let tempUser = User(snapshot: data) {
                         tempUsers.append(tempUser)
@@ -82,17 +84,19 @@ class UserModel {
                 }
             }
             self.users.removeAll()
-            self.users = tempUsers
+            self.users = tempUsers // store users in this model
             NotificationCenter.default.post(name: self.usersUpdatedNotification, object: nil)
         })
     }
     
+    // stop listening for updates
     func cancelObserver() {
         if let observerHandle = msgObserverHandle {
             userDBref.removeObserver(withHandle: observerHandle)
         }
     }
     
+    // get logged in user's user info and save in this model
     func getLoggedInUser() async throws {
         do {
             if let uid = authorizedUser?.uid {
@@ -107,6 +111,7 @@ class UserModel {
         }
     }
     
+    // get username based on ID using this model's saved data
     func getUsername(for uid: String) -> String? {
         return users.first(where: { $0.uid == uid })?.username
     }
