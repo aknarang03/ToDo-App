@@ -13,9 +13,11 @@ class UserModel {
     
     static let shared = UserModel()
     
-    let usersUpdatedNotification = Notification.Name(rawValue: usersListUpdatedKey)
+    let usersUpdatedNotification = Notification.Name(rawValue: usersNotificationKey)
     
     let userDBref = Database.database().reference(withPath: "Users")
+    
+    var msgObserverHandle: UInt?
     
     var authorizedUser: AuthenticatedUser?
     var currentUser: User?
@@ -29,6 +31,7 @@ class UserModel {
             let authData = try await Auth.auth().signIn(withEmail: email, password: pw)
             authorizedUser = AuthenticatedUser(uid: authData.user.uid, email: authData.user.email!)
             try await getLoggedInUser()
+            print("sign in async")
             return (true, "Login successful")
         }
         catch {
@@ -40,6 +43,8 @@ class UserModel {
     func signOut() {
         do {
             try Auth.auth().signOut()
+            authorizedUser = nil
+            currentUser = nil
         }
         catch let signOutError as NSError {
             print("Error signing out: \(signOutError)")
@@ -66,7 +71,7 @@ class UserModel {
     }
 
     func observeUsers () {
-        userDBref.observe(.value, with: {snapshot in
+        let msgObserverHandle = userDBref.observe(.value, with: {snapshot in
             var tempUsers:[User] = []
             for child in snapshot.children  {
                 if let data = child as? DataSnapshot {
@@ -81,17 +86,28 @@ class UserModel {
         })
     }
     
+    func cancelObserver() {
+        if let observerHandle = msgObserverHandle {
+            userDBref.removeObserver(withHandle: observerHandle)
+        }
+    }
+    
     func getLoggedInUser() async throws {
         do {
             if let uid = authorizedUser?.uid {
                 let userDBref = Database.database().reference()
                 let userData = try await userDBref.child("Users/\(uid)").getData()
                 currentUser = User(snapshot: userData)
+                print("get logged in user: \(currentUser?.uid ?? "no uid")")
             }
             
         } catch {
             print ("Cannot get logged in user")
         }
+    }
+    
+    func getUsername(for uid: String) -> String? {
+        return users.first(where: { $0.uid == uid })?.username
     }
     
 }

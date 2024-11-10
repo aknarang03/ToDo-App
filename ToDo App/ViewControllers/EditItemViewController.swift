@@ -20,6 +20,8 @@ class EditItemViewController: UIViewController {
         self.view.addGestureRecognizer(tapGesture)
         todoDescription.layer.cornerRadius = 10
         todoDescription.clipsToBounds = true
+        print("current uid: \(userModel.currentUser?.uid ?? "no current uid")")
+        print("show item id: \(showItemId)" ?? "no show item id")
     }
     
     @objc func dismissKeyboard() {
@@ -37,10 +39,12 @@ class EditItemViewController: UIViewController {
         if let itemId = showItemId {
             
             selectedItem = toDoModel.getItem(id: itemId)
+            print("selected item id: \(selectedItem?.todoID)" ?? "no selected item id")
+            print("added by id: \(selectedItem?.addedBy)" ?? "no added by id")
             
             if (selectedItem != nil) {
-                
-                let editable = (selectedItem?.addedBy == userModel.currentUser?.username)
+                                
+                let editable = (selectedItem?.addedBy == userModel.currentUser?.uid)
                 
                 todoDescription.text = selectedItem?.taskDescription
                 
@@ -69,7 +73,7 @@ class EditItemViewController: UIViewController {
         if let currentUser = userModel.currentUser {
 
             if (completedSwitch.isOn) {
-                selectedItem?.completedBy = currentUser.username
+                selectedItem?.completedBy = currentUser.uid
                 selectedItem?.completedDateTime = getLongDateTime()
             } else {
                 selectedItem?.completedBy = "N/A"

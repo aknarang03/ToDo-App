@@ -51,7 +51,7 @@ class AddItemViewController: UIViewController {
         guard let itemDesc = toDoItemContent.text else { return }
         let id = timeInterval()
         let postedTime = getLongDateTime()
-        let postedBy = userModel.currentUser!.username
+        let postedBy = userModel.currentUser!.uid
     
         let newItem = ToDo(todoID: id, taskDescription: itemDesc, addedBy: postedBy, addedDateTime: postedTime, completedBy: "N/A", completedDateTime: "N/A")
         

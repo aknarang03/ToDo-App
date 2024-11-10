@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
+        //userModel.observeUsers()
     }
     
     let userModel = UserModel.shared
@@ -42,6 +43,7 @@ class LoginViewController: UIViewController {
                 let (result, resultMessage) = try await userModel.signInAsync(withEmail: enteredEmail, andPassword: enteredPassword)
                 
                 if result { // LOGIN SUCCEEDED
+                    //userModel.observeUsers()
                     performSegue(withIdentifier: "loginSegue", sender: self)
                 }
                 
