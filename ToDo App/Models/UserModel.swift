@@ -71,7 +71,8 @@ class UserModel {
     }
 
     func observeUsers () {
-        let msgObserverHandle = userDBref.observe(.value, with: {snapshot in
+        
+        msgObserverHandle = userDBref.observe(.value, with: {snapshot in
             var tempUsers:[User] = []
             for child in snapshot.children  {
                 if let data = child as? DataSnapshot {
